@@ -1,0 +1,185 @@
+﻿@model ReportingViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+<div class="container-fluid page__container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="student-dashboard.html">الرئيسية</a></li>
+        <li class="breadcrumb-item active">موادي</li>
+    </ol>
+    <!--Accordion wrapper-->
+    <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+        <!-- Accordion card -->
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="headingTwo1">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo1"
+                   aria-expanded="false" aria-controls="collapseTwo1">
+                    <h5 class="mb-0">
+                        معلومات المواد الحالية<i class="fas fa-angle-down rotate-icon"></i>
+                    </h5>
+                </a>
+            </div>
+
+            <!-- Card body -->
+            <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1"
+                 data-parent="#accordionEx1">
+                <div class="card-body">
+                    <div class="media mb-headings align-items-center">
+                        <div class="media-body">
+                            <h1 class="h2">موادي</h1>
+                        </div>
+                    </div>
+                    <div class="card-columns">
+                        @{
+                            foreach (var item in Model.Subjects)
+                            {
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <a href="student-student-take-course.html">
+                                                    <img src="~/images/gulp.png"
+                                                 alt="Card image cap"
+                                                 width="100"
+                                                 class="rounded">
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h4 class="card-title m-0"><a href="#">@item.Name</a></h4>
+                                                <small class="text-muted">المحاضرات كاملة</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress rounded-0">
+                                        <div class="progress-bar progress-bar-striped bg-success"
+                                         role="progressbar"
+                                         style="width: 100%"
+                                         aria-valuenow="100"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="card-footer bg-white ">
+                                        <a href="student-take-course.html"
+                                       class="btn btn-white btn-sm">تنزيل  <i class="fa-solid fa-replay btn__icon--right"></i> </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                                                                  
+                    </div>  
+                </div>
+            </div>
+
+        </div>
+        <!-- Accordion card -->
+        <!-- Accordion card -->
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="headingTwo2">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapseTwo21"
+                   aria-expanded="false" aria-controls="collapseTwo21">
+                    <h5 class="mb-0">
+                        التقارير<i class="fas fa-angle-down rotate-icon"></i>
+                    </h5>
+                </a>
+            </div>
+
+            <!-- Card body -->
+            <div id="collapseTwo21" class="collapse" role="tabpanel" aria-labelledby="headingTwo21"
+                 data-parent="#accordionEx1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h4 class="card-title">تقارير العلامات</h4>
+                        </div>
+                        <div class="col-lg-8">
+                            <div>
+                                <div class="form-group">
+                                    <label class="form-label"
+                                           for="custom-select">نوع المعدل</label>
+                                    <select id="typeSelect"
+                                            class="form-control custom-select">
+                                        <option disabled selected>اختر نوع المعدل</option>
+                                        <option value="1">كلي</option>
+                                        <option value="2">سنوي</option>
+                                        <option value="3">فصلي</option>
+                                        <option value="4">أخر علامة</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label"
+                                           for="custom-select">تجميع العلامات حسب</label>
+                                    <select id="elementSelect"
+                                            class="form-control custom-select">
+                                        <option disabled selected>اختر سنة أو فصل أو مادة</option>
+                                        @{
+                                            foreach (var item in Model.Years)
+                                            {
+                                                <option value="@item.Id" data-type="2" class="d-none">@item.Name</option>
+                                            }
+                                            foreach (var item in Model.Semesters)
+                                            {
+                                                <option value="@item.Id" data-type="3" class="d-none">@item.Name</option>
+                                            }
+                                            foreach (var item in Model.Subjects)
+                                            {
+                                                <option value="@item.Id" data-type="4" class="d-none">@item.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <button id="submitButton"
+                                        class="btn btn-primary">
+                                    متابعة
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Accordion card -->
+    </div>
+    <!-- Accordion wrapper -->
+</div>
+<input id="UserId" type="hidden" value="@Model.UserId">
+<script src="~/lib/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#typeSelect").change(function () {
+            var data = $(this).val();
+            $("#elementSelect").val($("#subjectsSelect option:first").val());
+            $("#elementSelect option").each(function () {
+                $(this).addClass("d-none")
+                if ($(this).data("type") == data) {
+                    $(this).removeClass("d-none")
+                }
+            });
+        });
+        $('#submitButton').click(function () {
+            var dto = {}
+            var element = $("#elementSelect").find(":selected").val();
+            var type = $("#typeSelect").find(":selected").val();
+            var studentId = $("#UserId").val();
+            $.ajax({
+                url: '/User/Details',
+                type: 'POST',
+                data: {
+                    element: element, type: type, userId: studentId
+                },
+                dataType: 'json',
+                success: function (data) {
+                    alert("المعدل /العلامة المطلوبة هو " + data.value );
+                },
+                error: function (request, error) {
+                    alert(error + "حدث خطأ ما يرجى إعلام الدعم الفني بالخطأ التالي ");
+                }
+            });
+        });
+    });
+</script>

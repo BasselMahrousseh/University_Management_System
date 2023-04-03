@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Univ_Manage</title>
+    @await Html.PartialAsync(PathsViews._SharedStyles)
+    @RenderSection(Sections.Styles, required: false)
+</head>
+<body>
+    <div class="body">
+        <div role="main" class="main">
+            @RenderBody()
+        </div>
+        @await Html.PartialAsync(PathsViews._Footer)
+    </div>
+
+    @await Html.PartialAsync(PathsViews._SharedScripts)
+    @RenderSection(Sections.Scripts, required: false)
+</body>
+</html>

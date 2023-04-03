@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Permition\**" />
+    <EmbeddedResource Remove="Permition\**" />
+    <None Remove="Permition\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Univ_Manage.Core.Interfaces\Univ_Manage.Core.Interfaces.csproj" />
+    <ProjectReference Include="..\Univ_Manage.Infrastructure\Univ_Manage.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

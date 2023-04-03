@@ -1,0 +1,116 @@
+﻿@model SignUpViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutNoSidebar.cshtml";
+}
+<div class="d-flex align-items-center" style="min-height: 100vh">
+    <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
+        <div class="text-center mt-5 mb-1">
+            <div class="avatar avatar-lg">
+                <img src="~/images/logo/primary.svg" class="avatar-img rounded-circle" alt="LearnPlus" />
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mb-5 navbar-light">
+            <a href="" class="navbar-brand m-0">التعليم العالي</a>
+        </div>
+        <div class="card navbar-shadow">
+            <div class="card-header text-center">
+                <h4 class="card-title">حساب جديد</h4>
+                <p class="card-subtitle">إنشاء حساب جديد</p>
+            </div>
+            <div class="card-body">
+
+                <a href="{{ prefix }}dashboard.html" class="btn btn-light btn-block">
+                    <span class="fab fa-google mr-2"></span>
+                    المتابعة باستخدام غوغل
+                </a>
+
+                <div class="page-separator">
+                    <div class="page-separator__text">or</div>
+                </div>
+
+                <form asp-controller="User" asp-action="CreateUser" validate method="post">
+                    <div class="form-group">
+                        <label class="form-label" for="name">الاسم:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="Name" id="name" type="text" required="" class="form-control form-control-prepended" placeholder="الاسم الثلاثي هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">البريد الالكتروني:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="Email" id="email" type="email" required="" class="form-control form-control-prepended" placeholder="بريدك الالكتروني هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">كلمة السر:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="Password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="اختر كلمة سر هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-key"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password2">تأكيد كلمة السر:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="PasswordConfirmation" id="password2" type="password" required="" class="form-control form-control-prepended" placeholder="أعد كتابة كلمة السر هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-key"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"
+                               for="custom-select">السنة الدراسية</label>
+                        <select name="Year" id="yearSelect"
+                                class="form-control custom-select">
+                            <option disabled selected>اختر السنة الدراسية</option>
+                            @{
+                                foreach (var year in Model.Years)
+                                {
+                                    <option value="@year.Id">@year.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"
+                               for="custom-select">القسم</label>
+                        <select name="Department" id="yearSelect"
+                                class="form-control custom-select">
+                            <option disabled selected>اختر القسم هنا</option>
+                            @{
+                                foreach (var department in Model.Departments)
+                                {
+                                    <option value="@department.Id">@department.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mb-3">إنشاء الحساب هنا</button>
+                    <div class="form-group text-center mb-0">
+                        <div class="custom-control custom-checkbox">
+                            <input name="Terms" id="terms" type="checkbox" class="custom-control-input" checked required="">
+                            <label for="terms" class="custom-control-label text-black-70"><a href="#" class="text-black-70" style="text-decoration: underline;">سياسة الخصوصية </a>أوافق على</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center text-black-50"><a asp-controller="User" asp-action="LogIn">سجل دخول من هنا </a>لديك حساب مسبقا؟</div>
+        </div>
+    </div>
+</div>

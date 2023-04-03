@@ -1,0 +1,170 @@
+﻿@model AdminDashboardViewModel
+<div class="container-fluid page__container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="AdminDashboard">الرئيسية</a></li>
+        <li class="breadcrumb-item active">قائمة التحكم</li>
+    </ol>
+    <h1 class="h2">قائمة التحكم</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <div class="flex">
+                        <h4 class="card-title">علامات الطلاب</h4>
+                        <p class="card-subtitle">أخر 7 مواد</p>
+                    </div>
+                    <a asp-controller="Exam" asp-action="Index"
+                       class="btn btn-sm btn-primary"><i class="material-icons">إضافة علامات</i></a>
+                </div>
+                <div class="card-body">
+                    <div id="legend"
+                         class="chart-legend mt-0 mb-24pt justify-content-start"></div>
+                    <div class="chart"
+                         style="height: 200px;">
+                        <canvas id="earningsChart"
+                                class="chart-canvas js-update-chart-bar"
+                                data-chart-legend="#legend"
+                                data-chart-line-background-color="primary"
+                                data-chart-prefix="$"
+                                data-chart-suffix="k"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <div class="flex">
+                        <h4 class="card-title">الامتحانات</h4>
+                        <p class="card-subtitle">أخر 4 دورات امتحانية</p>
+                    </div>
+                    <a asp-controller="Exam" asp-action="SchedulingsPage"
+                       class="btn btn-sm btn-primary float-left"><i class="material-icons">جديد</i></a>
+                </div>
+                <div data-toggle="lists"
+                     data-lists-values='[
+            "js-lists-values-course",
+            "js-lists-values-document",
+            "js-lists-values-amount",
+            "js-lists-values-date"
+          ]'
+                     data-lists-sort-by="js-lists-values-date"
+                     data-lists-sort-desc="true"
+                     class="table-responsive">
+                    <table class="table table-nowrap m-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="2">
+                                    <a href="javascript:void(0)"
+                                       class="sort"
+                                       data-sort="js-lists-values-course">المادة</a>
+                                    <a href="javascript:void(0)"
+                                       class="sort"
+                                       data-sort="js-lists-values-date">التاريخ</a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            @{
+                                foreach (var exam in @Model.Last4Exams)
+                                {
+                                    <tr>
+                                <td>
+                                    <div class="media align-items-center">
+                                        <a href="instructor-course-edit.html"
+                                           class="avatar avatar-4by3 avatar-sm mr-3">
+                                            <img src="~/images/vuejs.png"
+                                                 alt="course"
+                                                 class="avatar-img rounded">
+                                        </a>
+                                        <div class="media-body">
+                                            <a class="text-body js-lists-values-course"
+                                               href="instructor-course-edit.html"><strong>@exam.Name</strong></a><br>
+                                            <small class="text-muted mr-1">
+                                                Invoice
+                                                <a href="instructor-invoice.html"
+                                                   style="color: inherit;"
+                                                   class="js-lists-values-document">#8734</a> -
+                                                &dollar;<span class="js-lists-values-amount">89</span> USD
+                                            </small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-right">
+                                    <small class="text-muted text-uppercase js-lists-values-date">@exam.StartDate</small>
+                                </td>
+                            </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <div class="flex">
+                        <h4 class="card-title">أعداد الطلاب</h4>
+                        <p class="card-subtitle">بالسنة الدراسية</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-fit mb-0">
+                    <li class="list-group-item">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <a asp-controller="User" asp-action="StudentsAccounts"
+                                   class="text-body"><strong>السنة الأولى</strong></a>
+                            </div>
+                            <div class="media-right">
+                                <div class="text-center">
+                                    <span class="badge badge-pill badge-primary">@Model.FirstYearCount</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <a asp-controller="User" asp-action="StudentsAccounts"
+                                   class="text-body"><strong>السنة الثانية</strong></a>
+                            </div>
+                            <div class="media-right">
+                                <div class="text-center">
+                                    <span class="badge badge-pill badge-success">@Model.SecondYearCount</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <a asp-controller="User" asp-action="StudentsAccounts"
+                                   class="text-body"><strong>السنة الثالثة</strong></a>
+                            </div>
+                            <div class="media-right">
+                                <div class="text-center">
+                                    <span class="badge badge-pill badge-warning">@Model.ThirdYearCount</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <a asp-controller="User" asp-action="StudentsAccounts"
+                                   class="text-body"><strong>السنة الرابعة</strong></a>
+                            </div>
+                            <div class="media-right">
+                                <div class="text-center">
+                                    <span class="badge badge-pill  badge-danger ">@Model.FourthYearCount</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/Dashboard/page.instructor-dashboard.js"></script>
+}

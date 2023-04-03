@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Univ_Manage.Infrastructure.Models.Univ.ExamSet">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAEAAAAAAAAIAAAAwAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\Univ\ExamSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Univ.DepartmetSet">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAGAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Univ\DepartmetSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.SharedKernal.Models.BaseEntityName">
+    <Position X="3.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Univ.SchedulingSet">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAEAgAAA=</HashCode>
+      <FileName>Models\Univ\SchedulingSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Univ.SemesterSet">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\Univ\SemesterSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Univ.SubjectSet">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAIAAAAAAAEAAAAIAAAAAAAAAgAAA=</HashCode>
+      <FileName>Models\Univ\SubjectSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Univ.UserSemesterSet">
+    <Position X="2" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABCAAABAAAAAAAIAAAAAgAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Univ\UserSemesterSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Univ.YearSet">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\Univ\YearSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Supervision.ReportingSet">
+    <Position X="4" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Supervision\ReportingSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Supervision.SettingSet">
+    <Position X="7" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Supervision\SettingSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Supervision.TransactionSet">
+    <Position X="12" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAQAgAAAAAAAABAAEAAAIAAAA=</HashCode>
+      <FileName>Models\Supervision\TransactionSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Univ_Manage.SharedKernal.Models.BaseEntity">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Object">
+    <Position X="3" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Security.RoleClaimSet" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Security\RoleClaimSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Security.RoleSet" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Security\RoleSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Security.UserClaimSet" BaseTypeListCollapsed="true">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Security\UserClaimSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Security.UserloginSet" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Security\UserloginSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Security.UserRoleSet" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAEAAAAAAgAAAAAAAAAAAAAUAAAAA=</HashCode>
+      <FileName>Models\Security\UserRoleSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Security.UserSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAgAAAAAAAAAAAEAAAAAgAAAAAAQAAAIg=</HashCode>
+      <FileName>Models\Security\UserSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.Models.Security.UserTokenSet" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\Security\UserTokenSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.IdentityRoleClaim&lt;TKey&gt;">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.IdentityRole&lt;TKey&gt;">
+    <Position X="11.25" Y="10" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.IdentityUserClaim&lt;TKey&gt;">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.IdentityUserLogin&lt;TKey&gt;">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.IdentityUserRole&lt;TKey&gt;">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.IdentityUser&lt;TKey&gt;">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.AspNetCore.Identity.IdentityUserToken&lt;TKey&gt;">
+    <Position X="20.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Univ_Manage.SqlServer.Seed.IdentitySeed.Services.RoleCreationService">
+    <Position X="8.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Seed\IdentitySeed\Services\RoleCreationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.SqlServer.Seed.IdentitySeed.Services.UserCreationService">
+    <Position X="17.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Seed\IdentitySeed\Services\UserCreationService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Univ_Manage.Infrastructure.SqlServer.YourDbContextFactory">
+    <Position X="17.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SqlServer\Univ_ManageDBContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

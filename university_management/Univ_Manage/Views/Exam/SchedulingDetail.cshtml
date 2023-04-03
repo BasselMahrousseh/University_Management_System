@@ -1,0 +1,47 @@
+﻿@using Univ_Manage.Core.DTOs.Univ
+@model SchedulingDetailViewModel
+
+<div class="container-fluid page__container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a>الرئيسية</a></li>
+        <li class="breadcrumb-item active">تفاصيل الدورات الامتحانية</li>
+    </ol>
+    <div class="table-responsive" data-toggle="lists" data-lists-values='["name"]'>
+        <!-- Search -->
+        <h2>تفاصيل  @Model.Name</h2>
+        <div class="search-form search-form--light mb-3">
+            <input type="text" class="form-control search" placeholder="اضغط هنا للبحث">
+            <button class="btn" type="button" role="button"><i class="fa-solid fa-search">بحث</i></button>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>اسم المادة</th>
+                    <th>القسم</th>
+                    <th>عدد المتقدمين</th>
+                    <th>نسبة النجاح</th>
+                    <th>التفاصيل</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody" class="list">
+                @{
+                    foreach (var item in Model.Exams)
+                    {
+                        if (Double.IsNaN(item.SuccsessRatio))
+                            item.SuccsessRatio = 0;
+                        <tr>
+                            <td class="name">@item.SubjectName</td>
+                            <td>@item.DepartmentName</td>
+                            <td>@item.NumberOfParticipants</td>
+                            <td>@item.SuccsessRatio %</td>
+                            <td><a asp-controller="Exam" asp-action="Detail" asp-route-SubjectId="@item.SubjectId" asp-route-SchedulingId="@Model.Id">مزيد من التفاصيل</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <button class="btn btn-primary float-right" onclick="history.back()">رجوع</button>
+    </div>
+</div>

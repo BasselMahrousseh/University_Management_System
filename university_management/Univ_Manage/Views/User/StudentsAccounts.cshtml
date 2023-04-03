@@ -1,0 +1,130 @@
+﻿@using Univ_Manage.Core.DTOs.Security.User
+@model PageViewModel<StudentDto>
+@section Styles{
+    <link rel="stylesheet" href="~/css/modal.css" />
+}
+<div id="myModal" class="popup">
+    <div class="popup-content">
+                    <span class="close">&times;</span>
+        <form asp-controller="User" asp-action="CreateStudent" validate method="post">
+                    <div class="form-group">
+                        <label class="form-label" for="name">الاسم:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="Name" id="name" type="text" required="" class="form-control form-control-prepended" placeholder="الاسم الثلاثي هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">البريد الالكتروني:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="Email" id="email" type="email" required="" class="form-control form-control-prepended" placeholder="بريدك الالكتروني هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">كلمة السر:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="Password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="اختر كلمة سر هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-key"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password2">تأكيد كلمة السر:</label>
+                        <div class="input-group input-group-merge">
+                            <input name="PasswordConfirmation" id="password2" type="password" required="" class="form-control form-control-prepended" placeholder="أعد كتابة كلمة السر هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fa fa-key"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"
+                               for="custom-select">السنة الدراسية</label>
+                        <select name="Year" id="yearSelect"
+                                class="form-control custom-select">
+                        <option value="1" >السنة الأولى</option>
+                        <option value="2" >السنة الثانية</option>
+                        <option value="3">السنة الثالثة</option>
+                        <option value="4" >السنة الرابعة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"
+                               for="custom-select">القسم</label>
+                        <select name="Department" id=""
+                                class="form-control custom-select">
+                        <option value = "1">عام</option>
+                        <option value = "2">نظم_المعلومات</option>
+                        <option value = "3">محاسبة</option>
+                        <option value = "4">إدارة</option>
+                        <option value = "5">معاملات_مالية_ومصرفية</option>
+                        <option value = "6">اقتصاد</option>
+                        <option value = "7">تسويق</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mb-3">إنشاء الحساب هنا</button>
+                    <div class="form-group text-center mb-0">
+                        <div class="custom-control custom-checkbox">
+                            <input name="Terms" id="terms" type="checkbox" class="custom-control-input" checked required="">
+                            <label for="terms" class="custom-control-label text-black-70"><a href="#" class="text-black-70" style="text-decoration: underline;">سياسة الخصوصية </a>أوافق على</label>
+                        </div>
+                    </div>
+                </form></div>
+    
+    </div>
+<div class="container-fluid page__container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Dashboard" asp-route-userId="@Model.UserId">الرئيسية</a></li>
+        <li class="breadcrumb-item active">حسابات الطلاب</li>
+    </ol>
+    <div class="table-responsive" data-toggle="lists" data-lists-values='["name"]'>
+        <!-- Search -->
+        <div class="search-form search-form--light mb-3">
+            <input type="text" class="form-control search" placeholder="اضغط هنا للبحث">
+            <button class="btn" type="button" role="button"><i class="fa-solid fa-search">بحث</i></button>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>اسم الطالب</th>
+                    <th>القسم</th>
+                    <th>السنة الدراسية</th>
+                    <th>التفاصيل</th>
+                    <th><button id="AddStudent" class="btn btn-primary" type="button" role="button"><i class="fa-solid fa-plus"> إضافة</i></button></th>
+                </tr>
+            </thead>
+            <tbody id="tableBody" class="list">
+                @{
+                    foreach (var item in Model.Records)
+                    {
+                        <tr>
+                            <td class="name">@item.Name</td>
+                            <td>@item.DepatmentName</td>
+                            <td>@item.AcademicYear</td>
+                            <td><a asp-controller="User" asp-action="StudentDetail" asp-route-userId="@item.Id">المزيد من التفاصيل</a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/studentModal.js"></script>
+}

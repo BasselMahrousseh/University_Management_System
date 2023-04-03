@@ -1,0 +1,141 @@
+﻿@model ExamsViewModel
+<div class="container-fluid page__container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="student-dashboard.html">الرئيسية</a></li>
+        <li class="breadcrumb-item active">العلامات الامتحانية</li>
+    </ol>
+    <div class="row">
+        <div class="col-lg-4">
+            <h4 class="card-title">إضافة علامات جديدة</h4>
+        </div>
+        <div class="col-lg-8">
+            <form action="#">
+                <div class="form-group">
+                    <label class="form-label"
+                           for="custom-select">السنة الدراسية</label>
+                    <select id="yearSelect"
+                            class="form-control custom-select">
+                        <option disabled selected>اختر السنة الدراسية هنا</option>
+                        @{
+                            foreach (var year in Model.Years)
+                            {
+                                                <option value="@year.Id">@year.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label"
+                           for="custom-select">المواد</label>
+                    <select id="subjectsSelect"
+                            class="form-control custom-select">
+                        <option disabled selected>اختر مادة</option>
+                        @{
+                            foreach (var department in Model.Departments)
+                            {
+                                                <optgroup label="@department.Name">
+                                                @foreach (var subject in Model.Subjects.Where(s=>s.DepartmentId==department.Id).ToList())
+                                    {
+                                                        <option value="@subject.Id" data-section="@subject.DepartmentId" data-year="@subject.YearId" class="d-none">@subject.Name</option>
+                                    }
+                                                </optgroup>
+                            }    
+                        }
+                    </select>
+                </div>
+                <table id="Students" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>الاسم</th>
+                            <th>العلامة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <button id="submitButton"
+                        class="btn btn-primary">
+                    اختيار
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/lib/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#yearSelect").change(function () {
+            var data = $(this).val();
+            $("#subjectsSelect").val($("#subjectsSelect option:first").val());
+            $("#subjectsSelect > optgroup > option").each(function () {
+                $(this).addClass("d-none")
+                if ($(this).data("year") == data) {
+                    $(this).removeClass("d-none")
+                }
+            });
+            $("tbody tr").each(function () {
+                $(this).remove()
+            });
+        });
+        $("#subjectsSelect").change(function () {
+            var sectionId = $(this).find(":selected").data("section");
+            var yearId = $(this).find(":selected").data("year");
+            $("tbody tr").each(function () {
+                $(this).remove()
+            });
+            var SubjectId = $("#subjectsSelect").find(":selected").val();
+            $.ajax({
+                url: '/Exam/GetValidStudents',
+                type: 'POST',
+                data: {
+                    SubjectId: SubjectId
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data)
+                    for(var i = 0;i < data.records.length;i++)
+                    {
+                        $("#Students>tbody").append("<tr data-id='" + data.records[i].id + "' data-section='" + data.records[i].sectionId + "' data-year='" + data.records[i].academicYear + "'><td>" + data.records[i].name + "</td><td><input type='text' onkeydown='return (event.ctrlKey || event.altKey|| (47 < event.keyCode && event.keyCode < 58 && event.shiftKey == false)|| (95 < event.keyCode && event.keyCode < 106)|| (event.keyCode == 8) || (event.keyCode == 9)|| (event.keyCode > 34 && event.keyCode < 40)|| (event.keyCode == 46))' onkeyup='if (this.value < 0) this.value = 0;if (this.value > 100) this.value = 100; ' class='mark' name='row - 1 - age' value='61'></td></tr>");
+                    }
+                },
+                error: function (request, error) {
+                    alert(error+"حدث خطأ ما يرجى إعلام الدعم الفني بالخطأ التالي ");
+                }
+            });
+            $("tbody tr").each(function () {
+                if ($(this).data("year") == yearId && (sectionId == 1 || $(this).data("section") == sectionId)) {
+                    $(this).remove()
+                }
+            })
+        })
+        $('#submitButton').click(function () {
+            var dto = {}
+            var SubjectId = $("#subjectsSelect").find(":selected").val();
+            var StudentMarks = []
+            $("tbody tr").each(function () {
+                var StudentMarkDto = {}
+                StudentMarkDto.StudentId = $(this).data("id")
+                StudentMarkDto.Mark = $(this).find("input").val()
+                StudentMarks.push(StudentMarkDto)
+            })
+            dto = { SubjectId: SubjectId, StudentsMarks: StudentMarks }
+            $.ajax({
+                url: '/Exam/StudentMarks',
+                type: 'POST',
+                data: {
+                    dto: dto
+                },
+                dataType: 'json',
+                success: function (data) {
+                    alert("تم تسجيل العلامات بنجاح");
+                    $("tbody tr").each(function () {
+                        $(this).remove()
+                    });
+                },
+                error: function (request, error) {
+                    alert(error + "حدث خطأ ما يرجى إعلام الدعم الفني بالخطأ التالي ");
+                }
+            });
+        });
+    });
+</script>

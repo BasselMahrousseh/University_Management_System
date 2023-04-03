@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Univ_Manage</title>
+    @await Html.PartialAsync(PathsViews._SharedStyles)
+    @RenderSection(Sections.Styles, required: false)
+</head>
+<body class=" layout-fluid">
+    <div class="mdk-header-layout js-mdk-header-layout">
+        @await Html.PartialAsync(PathsViews._Header)
+        <div class="mdk-header-layout__content">
+            <div data-push
+                 data-responsive-width="992px"
+                 class="mdk-drawer-layout js-mdk-drawer-layout">
+                <div class="mdk-drawer-layout__content page ">
+                    @RenderBody()
+                </div>
+                @await Html.PartialAsync(PathsViews._PageHeaderStudent)
+                @await Html.PartialAsync(PathsViews._Footer)
+            </div>
+            <div id="app-settings" class="d-none">
+                <app-settings layout-active="default"
+                              :layout-location="{
+      'fixed': 'fixed-student-dashboard.html',
+      'default': 'student-dashboard.html'
+    }"
+                              sidebar-variant="bg-transparent border-0"></app-settings>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync(PathsViews._SharedScripts)
+    @RenderSection(Sections.Scripts, required: false)
+</body>
+</html>

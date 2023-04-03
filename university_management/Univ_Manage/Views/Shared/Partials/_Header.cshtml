@@ -1,0 +1,167 @@
+﻿<div id="header"
+     data-fixed
+     class="mdk-header js-mdk-header mb-0">
+    <div class="mdk-header__content">
+
+        <!-- Navbar -->
+        <nav id="default-navbar"
+             class="navbar navbar-expand navbar-dark bg-primary m-0">
+            <div class="container-fluid">
+                <!-- Toggle sidebar -->
+                <button class="navbar-toggler d-block"
+                        data-toggle="sidebar"
+                        type="button">
+                    <span class="fa fa-bars"></span>
+                </button>
+
+                <!-- Brand -->
+                <a
+                   class="navbar-brand">
+                    <img src="~/images/logo/white.svg"
+                         class="avatar-img mr-2"
+                         alt="LearnPlus" />
+                    <span class="d-none d-xs-md-block">LearnPlus</span>
+                </a>
+
+                <!-- Search -->
+                <form class="search-form d-none d-md-flex">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Search">
+                    <button class="btn"
+                            type="button">
+                        <i class="fa-solid fa-search font-size-24pt"></i>
+                    </button>
+                </form>
+                <!-- // END Search -->
+
+                <div class="flex"></div>
+
+                <!-- Menu -->
+                <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="student-forum.html">المنتدى</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="student-help-center.html">المساعدة</a>
+                    </li>
+                </ul>
+
+                <!-- Menu -->
+                <ul class="nav navbar-nav flex-nowrap">
+                    <!-- Notifications dropdown -->
+                    <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
+                        <button class="nav-link btn-flush dropdown-toggle"
+                                type="button"
+                                data-toggle="dropdown"
+                                data-dropdown-disable-document-scroll
+                                data-caret="false">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="badge badge-notifications badge-danger">2</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div data-perfect-scrollbar
+                                 class="position-relative">
+                                <div class="dropdown-header"><strong>الإشعارات</strong></div>
+                                <div class="list-group list-group-flush mb-0">
+
+                                    <a href="student-messages.html"
+                                       class="list-group-item list-group-item-action border-left-3 border-left-danger">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">منذ 3 دقائق</small>
+
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i class="fa-solid fa-account font-size-16pt text-danger">account_circle</i>
+                                                </span>
+                                            </span>
+                                            <span class="flex d-flex flex-column">
+
+                                                <span class="text-black-70">معلومات حسابك غير مزامنة من مدة طويلة اضغط للمزامنة</span>
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <a href="student-messages.html"
+                                       class="list-group-item list-group-item-action">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">منذ 5 ساعات</small>
+
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i class="fa-solid fa-group font-size-16pt text-success"></i>
+                                                </span>
+                                            </span>
+                                            <span class="flex d-flex flex-column">
+                                                <strong>أحمد السيد</strong>
+                                                <span class="text-black-70">يريد الانضمام للمنتدى الرياضي</span>
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                    <a href="student-messages.html"
+                                       class="list-group-item list-group-item-action">
+                                        <span class="d-flex align-items-center mb-1">
+                                            <small class="text-muted">منذ يوم واحد</small>
+
+                                        </span>
+                                        <span class="d-flex">
+                                            <span class="avatar avatar-xs mr-2">
+                                                <span class="avatar-title rounded-circle bg-light">
+                                                    <i class="fa-solid fa-warehouse font-size-16pt text-warning"></i>
+                                                </span>
+                                            </span>
+                                            <span class="flex d-flex flex-column">
+
+                                                <span class="text-black-70">تمت عملية الرفع بنجاح</span>
+                                            </span>
+                                        </span>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // END Notifications dropdown -->
+                    <!-- User dropdown -->
+                    <li class="nav-item dropdown ml-1 ml-md-3">
+                        <a class="nav-link dropdown-toggle"
+                           data-toggle="dropdown"
+                           href="#"
+                           role="button">
+                            <img src="~/images/people/50/guy-6.jpg"
+                                 alt="Avatar"
+                                 class="rounded-circle"
+                                 width="40">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item"
+                               href="student-account-edit.html">
+                                <i class="fa-solid fa-edit"></i> تعديل الحساب
+                            </a>
+                            <a class="dropdown-item"
+                               href="student-profile.html">
+                                <i class="fa-solid fa-person"></i> الملف الشخصي
+                            </a>
+                            <a class="dropdown-item"
+                               asp-controller="User" asp-action="LogIn">
+                                <i class="fa-solid fa-lock"></i> تسجيل الخروج
+                            </a>
+                        </div>
+                    </li>
+                    <!-- // END User dropdown -->
+
+                </ul>
+                <!-- // END Menu -->
+            </div>
+        </nav>
+        <!-- // END Navbar -->
+
+    </div>
+</div>

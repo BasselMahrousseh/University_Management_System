@@ -1,0 +1,114 @@
+﻿<div class="mdk-drawer js-mdk-drawer"
+     id="default-drawer">
+    <div class="mdk-drawer__content ">
+        <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden"
+             data-perfect-scrollbar>
+            <div class="sidebar-p-y">
+                <div class="sidebar-heading">APPLICATIONS</div>
+                <ul class="sidebar-menu sm-active-button-bg">
+
+                    <li class="sidebar-menu-item active">
+                        <a class="sidebar-menu-button" asp-controller="Home" asp-action="DashboardPage" asp-route-userId="@Model.UserId">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa-solid fa-user-circle"></i> الرئيسية
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- Account menu -->
+                <div class="sidebar-heading">الحساب الشخصي</div>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button sidebar-js-collapse"
+                           data-toggle="collapse"
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa-solid fa-user-alt"></i>
+                            حسابي
+                            <i class="fa fa-chevron-down ml-auto"></i>
+                        </a>
+                        <ul class="sidebar-submenu sm-indent collapse"
+                            id="account_menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" asp-controller="Home" asp-action="Dashboard" asp-route-userId="@Model.UserId">
+                                    <span class="sidebar-menu-text">تغيير كلمة السر</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button"
+                                   asp-controller="Home" asp-action="Dashboard" asp-route-userId="@Model.UserId">
+                                    <span class="sidebar-menu-text">تعديل الحساب</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="sidebar-heading">حساب الطالب</div>
+                <ul id="accordion" class="accordion sidebar-menu sm-active-button-bg">
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           asp-controller="Exam" asp-action="MyExams" asp-route-StudentId="@Model.UserId" asp-route-StudentId="@Model.UserId">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa-solid fa-chart-bar"></i> نتائج الامتحانات
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" asp-controller="User" asp-action="MyCourses" asp-route-userId="@Model.UserId">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa-solid fa-file-pdf"></i> التقارير
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           data-toggle="collapse"
+                           href="#forum_menu">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa-solid fa-comment-dots"></i>
+                            المجتمع
+                            <i class="fa fa-chevron-down ml-auto"></i>
+                        </a>
+                        <ul class="sidebar-submenu sm-indent collapse"
+                            id="forum_menu">
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button"
+                                   href="student-forum.html">
+                                    <span class="sidebar-menu-text">المنتدى</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button"
+                                   href="student-forum-thread.html">
+                                    <span class="sidebar-menu-text">النقاشات</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button"
+                                   href="student-forum-ask.html">
+                                    <span class="sidebar-menu-text">الأسئلة و الاستفسارات</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button"
+                                   href="student-profile.html">
+                                    <span class="sidebar-menu-text">مواد الطالب</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button"
+                                   href="instructor-profile.html">
+                                    <span class="sidebar-menu-text">مدرسي المواد</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           href="student-help-center.html">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa-solid fa-info-circle"></i> المساعدة
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button"
+                           asp-controller="User" asp-action="LogIn">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa-solid fa-lock-open"></i> تسجيل الخروج
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

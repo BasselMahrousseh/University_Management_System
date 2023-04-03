@@ -1,0 +1,70 @@
+﻿@using Univ_Manage.Core.DTOs.Univ
+@model PageViewModel<SchedulingDto>
+@section Styles{
+    <link rel="stylesheet" href="~/css/modal.css" />
+}
+<div id="myModal" class="popup">
+        <!-- Modal content -->
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <div class="form-group">
+                <label class="form-label" for="name">الاسم:</label>
+                <div class="input-group input-group-merge">
+                    <input name="name" id="name" type="text" required="" class="form-control form-control-prepended" placeholder="الاسم الدورة الامتحانية">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="flatpickrSample02">الجدول الزمني</label>
+                <input id="datePicker" type="hidden" class="form-control flatpickr-input" placeholder="Flatpickr range example" data-toggle="flatpickr" data-flatpickr-mode="range" value="2018-10-07 to 2018-10-15">
+            </div>
+            <button id="modalSubmit" class="btn btn-primary">إضافة</button>
+        </div>
+    </div>
+<div class="container-fluid page__container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="student-dashboard.html">الرئيسية</a></li>
+            <li class="breadcrumb-item active">الدورات الامتحانية</li>
+        </ol>
+        <div class="table-responsive" data-toggle="lists" data-lists-values='["name"]'>
+            <!-- Search -->
+            <div class="search-form search-form--light mb-3">
+                <input type="text" class="form-control search" placeholder="اضغط هنا للبحث">
+                <button class="btn" type="button" role="button"><i class="fa-solid fa-search">بحث</i></button>
+            </div>
+
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>اسم الدورة</th>
+                        <th>تاريخ البداية</th>
+                        <th>تاريخ النهاية</th>
+                        <th>
+                            <button id="myBtn" class="btn btn-primary float-right" type="button" role="button"><i class="fa-solid fa-plus"> إضافة</i></button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody" class="list">
+                    @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="name">@item.Name</td>
+                            <td>@item.StartDate</td>
+                            <td>@item.EndDate</td>
+                            <td><a asp-controller="Exam" asp-action="SchedulingDetail" asp-route-SchedulingId="@item.Id">المزيد من التفاصيل</a></td>
+                        </tr>
+                    }
+                }
+                </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/modal.js"></script>
+}

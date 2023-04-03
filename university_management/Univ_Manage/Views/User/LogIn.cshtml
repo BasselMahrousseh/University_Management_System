@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoSidebar.cshtml";
+}
+<div class="d-flex align-items-center" style="min-height: 100vh">
+    <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
+        <div class="text-center mt-5 mb-1">
+            <div class="avatar avatar-lg">
+                <img src="~/images/logo/primary.svg" class="avatar-img rounded-circle" alt="LearnPlus" />
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mb-5 navbar-light">
+            <a href="" class="navbar-brand m-0">التعليم العالي</a>
+        </div>
+        <div class="card navbar-shadow">
+            <div class="card-header text-center">
+                <h4 class="card-title">تسجيل الدخول</h4>
+                <p class="card-subtitle">الوصول إلى حسابك</p>
+            </div>
+            <div class="card-body">
+
+                <a href="{{ prefix }}dashboard.html" class="btn btn-light btn-block">
+                    <span class="fab fa-google mr-2"></span> المتابعة باستخدام غوغل
+                </a>
+
+                <div class="page-separator">
+                    <div class="page-separator__text">أو</div>
+                </div>
+
+                <form asp-controller="User" asp-action="LogIn" validate method="post">
+                    <div class="form-group">
+                        <label class="form-label" for="email">اسم المستخدم</label>
+                        <div class="input-group input-group-merge">
+                            <input name="Name" id="Name" required class="form-control form-control-prepended" placeholder="اسم المستخدم هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa-solid fa-person"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">كلمة السر</label>
+                        <div class="input-group input-group-merge">
+                            <input name="password" id="password" type="password" required="" class="form-control form-control-prepended" placeholder="كلمة السر هنا">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fa-solid fa-key"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-primary btn-block">تسجيل الدخول</button>
+                    </div>
+                    <div class="text-center">
+                        <a href="guest-forgot-password.html" class="text-black-70" style="text-decoration: underline;">نسيت كلمة السر؟</a>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center text-black-50">
+                ليس لديك حساب؟ <a asp-controller="User" asp-action="SignUp">إنشاء حساب</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@using Univ_Manage.Core.DTOs.Univ
+@model PageViewModel<ExamDto>
+
+<div class="container-fluid page__container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="student-dashboard.html">الرئيسية</a></li>
+        <li class="breadcrumb-item active">امتحانات الطالب</li>
+    </ol>
+    <div class="table-responsive" data-toggle="lists" data-lists-values='["name"]'>
+        <!-- Search -->
+        <div class="search-form search-form--light mb-3">
+            <input type="text" class="form-control search" placeholder="اضغط هنا للبحث">
+            <button class="btn" type="button" role="button"><i class="fa-solid fa-search">بحث</i></button>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>اسم المادة</th>
+                    <th>الدورة الامتحانية</th>
+                    <th>العلامة</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody" class="list">
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="name">@item.SubjectName</td>
+                            <td>@item.SchedulingName</td>
+                            <td>@item.Grade</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <button onclick="history.back()" class="btn btn-primary float-right">رجوع</button>
+    </div>
+</div>
